@@ -1,19 +1,21 @@
 {% extends "index.html" %}
 {% block outlet %}
-<div class="container mt-5">
+<div class="container mt-5 w-50">
     <h1>Register Form</h1>
-    <form class="row g-3">
+    <form class="row g-3" action = "" method = "post">
+      {% csrf_token %}
       <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" />
+        <label for="inputName4" class="form-label">Name</label>
+        <input
+          type="Name"
+          class="form-control"
+          id="inputName4"
+          name = "uname"
+        />
       </div>
       <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="inputPassword4"
-        />
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" name="uemail" id="inputEmail4" />
       </div>
       <div class="col-12">
         <label for="inputAddress" class="form-label">Address</label>
@@ -22,46 +24,23 @@
           class="form-control"
           id="inputAddress"
           placeholder="1234 Main St"
+          name = "address"
         />
-      </div>
-      <div class="col-12">
-        <label for="inputAddress2" class="form-label">Address 2</label>
-        <input
-          type="text"
-          class="form-control"
-          id="inputAddress2"
-          placeholder="Apartment, studio, or floor"
-        />
-      </div>
-      <div class="col-md-6">
-        <label for="inputCity" class="form-label">City</label>
-        <input type="text" class="form-control" id="inputCity" />
       </div>
       <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
+        <label for="inputAge" class="form-label">Age</label>
+        <input type="number" class="form-control" id="inputAge" name = "uage" />
       </div>
-      <div class="col-md-2">
-        <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" class="form-control" id="inputZip" />
+      <div class="col-md-4">
+        <label for="inputMobile" class="form-label">Mobile</label>
+        <input type="text" class="form-control" id="inputMobile" name="mobile" />
       </div>
-      <div class="col-12">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="gridCheck"
-          />
-          <label class="form-check-label" for="gridCheck">
-            Check me out
-          </label>
-        </div>
+      <div class="col-md-4">
+        <label for="inputDOB" class="form-label">DOB</label>
+        <input type="date" class="form-control" id="inputDOB" name="dob" />
       </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary w-100">Sign in</button>
       </div>
     </form>
 </div>
