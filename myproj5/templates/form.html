@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block outlet %}
+<div class="container mt-5 w-50">
+    <h1>Register Form</h1>
+    <form class="row g-3" action = "" method = "post">
+      {% csrf_token %}
+      <div class="col-md-6">
+        <label for="inputName4" class="form-label">Name</label>
+        <input
+          type="Name"
+          class="form-control"
+          id="inputName4"
+          name = "uname"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" name="uemail" id="inputEmail4" />
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          placeholder="1234 Main St"
+          name = "address"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="inputAge" class="form-label">Age</label>
+        <input type="number" class="form-control" id="inputAge" name = "uage" />
+      </div>
+      <div class="col-md-4">
+        <label for="inputMobile" class="form-label">Mobile</label>
+        <input type="text" class="form-control" id="inputMobile" name="mobile" />
+      </div>
+      <div class="col-md-4">
+        <label for="inputDOB" class="form-label">DOB</label>
+        <input type="date" class="form-control" id="inputDOB" name="dob" />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">Sign in</button>
+      </div>
+    </form>
+</div>
+{% endblock outlet %}

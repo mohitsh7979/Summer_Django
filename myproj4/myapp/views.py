@@ -17,4 +17,9 @@ def index(request):
     return render(request,'Form.html')
 
 def Table(request):
-    return render(request,'Table.html')
+    data = Student.objects.all()
+    context = {
+        
+        'Data':data
+    }
+    return render(request,'Table.html',context)
