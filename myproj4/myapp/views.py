@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import Student
 
 # Create your views here.
@@ -12,7 +12,7 @@ def index(request):
         user_mobile = request.POST['mobile']
         user_dob = request.POST['dob']
         Student(name=user_name,email=user_email,age=user_age,address=user_address,mobile=user_mobile,dob=user_dob).save()
-        return HttpResponse('Data Saved !!')
+        return redirect('/table/')
        
     return render(request,'Form.html')
 
@@ -22,4 +22,13 @@ def Table(request):
         
         'Data':data
     }
+    # for i in data:
+    #     print(i.id,i.name,i.email,i.age)
     return render(request,'Table.html',context)
+
+def deletehandle(request,id):   
+    data = Student.objects.filter(id=id)
+    data.delete()
+    return redirect('/table/')
+    
+    

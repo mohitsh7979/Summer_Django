@@ -1,5 +1,5 @@
 """
-URL configuration for myproj4 project.
+URL configuration for myproj6 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -20,7 +20,8 @@ from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
-    path('table/',views.Table),
-    path('delete/<int:id>/',views.deletehandle)
+    path('',views.getform),
+    path('data/',views.getdata),
+    path('delete/<int:id>/',views.deletehandle),
+    path('update/<int:id>/',views.updatehandle)
 ]
