@@ -1,5 +1,8 @@
 from django.shortcuts import render,HttpResponse,redirect
 from .models import Information
+from .forms import SinupForm
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 
@@ -41,6 +44,36 @@ def updatehandle(request,id):
     return render(request,'update.html',context)
 
 
-# curd 
+def signuphandle(request):
+    if request.method == "POST":
+        form = SinupForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            confirm_password = form.cleaned_data['confirm_password']
+                                  
+            if User.objects.filter(username=username).first():
+                messages.success(request,'This is username is already taken !!')
+            
+            elif User.objects.filter(email=email).first():
+                messages.success(request,'This email is already taken !!')
+            
+            elif password != confirm_password:
+                messages.success(request,'Both password field should be same')
+            
+            else:
+                user = User(username=username,email=email)
+                user.set_password(password)
+                user.save()
+                messages.success(request,'Account Successfully Created !!')
+                return redirect('/signup/')
+    form = SinupForm()
+    context = {
+        'form':form
+    }
+    return render(request,'Signup.html',context)
 
-# create update read delete 
+def loginhandle(request):
+    return render(request,'Login.html')
+

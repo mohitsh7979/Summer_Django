@@ -23,5 +23,7 @@ urlpatterns = [
     path('',views.getform),
     path('data/',views.getdata),
     path('delete/<int:id>/',views.deletehandle),
-    path('update/<int:id>/',views.updatehandle)
+    path('update/<int:id>/',views.updatehandle),
+    path('signup/',views.signuphandle),
+    path('login/',views.loginhandle)
 ]
