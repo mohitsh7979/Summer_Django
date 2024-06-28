@@ -25,5 +25,6 @@ urlpatterns = [
     path('delete/<int:id>/',views.deletehandle),
     path('update/<int:id>/',views.updatehandle),
     path('signup/',views.signuphandle),
-    path('login/',views.loginhandle)
+    path('login/',views.loginhandle),
+    path('logout/',views.logouthandle)
 ]

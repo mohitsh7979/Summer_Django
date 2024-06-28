@@ -1,8 +1,9 @@
 from django.shortcuts import render,HttpResponse,redirect
 from .models import Information
-from .forms import SinupForm
+from .forms import SinupForm,LoginForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import login,logout,authenticate
 
 # Create your views here.
 
@@ -75,5 +76,26 @@ def signuphandle(request):
     return render(request,'Signup.html',context)
 
 def loginhandle(request):
-    return render(request,'Login.html')
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            
+            user = authenticate(username=username,password=password)
+            
+            if user is not None:
+                login(request,user)
+                return redirect('/')
+            else:
+                messages.success(request,'Wrong Password')
+            
+    form = LoginForm()
+    return render(request,'Login.html',{'form':form})
+
+
+def logouthandle(request):
+    logout(request)
+    return redirect('/login/')
+
 
