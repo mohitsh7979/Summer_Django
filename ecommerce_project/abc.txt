@@ -1,0 +1,19 @@
+product 
+    title jeans
+    price 100
+    description best
+
+
+user 
+  username mohit
+  email mohit@gmail.com
+  password 123
+
+
+
+add_to_cart 
+   user --> reference form user table by foreign key  
+   product --> reference form product table by foreign key
+   quantity --> intergier field 
+
+ 

@@ -27,5 +27,16 @@ def shop_category(request):
     product = Product.objects.all()
     return render(request,'category.html')
 
+
+def add_to_cart(request,id):
+    product = Product.objects.get(id=id)
+    user = request.user 
+    quantity = 2
+    AddToCart(user=user,product=product,quantity=quantity).save()
+    
+    data = AddToCart.objects.filter(user=request.user)
+    print(data)
+    return render(request,'cart.html',{'data':data})
+
 def checkout(request):
     return render(request,'checkout.html')
