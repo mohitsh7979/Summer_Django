@@ -29,10 +29,12 @@ def shop_category(request):
 
 
 def add_to_cart(request,id):
-    product = Product.objects.get(id=id)
-    user = request.user 
-    quantity = 2
-    AddToCart(user=user,product=product,quantity=quantity).save()
+    if request.method == "POST":
+        product = Product.objects.get(id=id)
+        user = request.user 
+        quantity = request.POST['myquantity']
+        print(quantity,"quantity")
+        AddToCart(user=user,product=product,quantity=quantity).save()
     
     data = AddToCart.objects.filter(user=request.user)
     print(data)
